@@ -1,0 +1,6 @@
+@HeatWatch.API_HostAddress = http://localhost:5029
+
+GET {{HeatWatch.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
