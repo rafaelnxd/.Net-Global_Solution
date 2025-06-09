@@ -121,9 +121,9 @@ dotnet run
 
 **POST /api/v1/regioes**
 
-json
 
-CopiarEditar
+
+
 
 `{
   "nome": "Região Central",
@@ -135,7 +135,7 @@ CopiarEditar
 
 **POST /api/v1/eventos-calor**
 
-json
+
 
 CopiarEditar
 
@@ -149,7 +149,7 @@ CopiarEditar
 
 **POST /api/v1/registros-temperatura**
 
-json
+
 
 CopiarEditar
 
@@ -161,7 +161,7 @@ CopiarEditar
 
 **POST /api/v1/alertas**
 
-json
+
 
 CopiarEditar
 
@@ -172,28 +172,23 @@ CopiarEditar
   "eventoCalorId": 1
 }`
 
-* * * * *
+
 
 ⚙️ Instruções de Testes
 -----------------------
 
 ### Testes Unitários
 
-bash
 
-CopiarEditar
 
 `cd HeatWatch.API.Tests
-dotnet test --filter Category=Unit`
+dotnet test
 
 ### Testes de Integração
 
-bash
-
-CopiarEditar
 
 `cd HeatWatch.API.Tests
-dotnet test --filter Category=Integration`
+dotnet test 
 
 * * * * *
 
