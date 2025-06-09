@@ -4,6 +4,11 @@
 
 ---
 
+Integrantes:
+Rafael de Novaes – RM553934 – 2TDSPC
+Fabiola Falcão – RM552715 – 2TDSPC
+Carlos Henrique Furtado Nascimento – RM553597 – 2TDSPR
+
 ## 📖 Descrição do Projeto
 
 O serviço oferece:
