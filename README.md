@@ -65,7 +65,7 @@ dotnet run
 
 ### 4\. Acesso à API
 
--   **Swagger UI**: `https://localhost:{PORT}/swagger`
+-   **Swagger UI**: `https://localhost:{PORT}/`
 
 -   **Base URL**: `https://localhost:{PORT}/api/v1`
 
