@@ -192,10 +192,4 @@ dotnet test
 
 * * * * *
 
-📌 Observações
---------------
-
--   A organização e formatação deste README influenciam diretamente a avaliação do projeto.
-
--   Siga as boas práticas de Markdown, mantendo seções claras e exemplos precisos.
 
