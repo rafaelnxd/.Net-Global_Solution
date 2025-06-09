@@ -1,152 +1,120 @@
-HeatWatch API
+# HeatWatch API
 
-  
+**HeatWatch API** é uma aplicação RESTful desenvolvida em **ASP.NET Core 8** para monitoramento de regiões, eventos de calor, registros de temperatura e alertas.
 
-📖 Descrição do Projeto
+---
 
-HeatWatch API é uma aplicação RESTful desenvolvida com ASP.NET Core (.NET 8) para monitoramento de regiões, eventos de calor, registros de temperatura e alertas. O serviço utiliza Oracle como banco de dados, JWT para autenticação, e oferece:
+## 📖 Descrição do Projeto
 
-Versionamento de API via URL
+O serviço oferece:
 
-Tratamento de erros padronizado (RFC7807)
+- Versionamento de API via URL (v1, v2, …)  
+- Tratamento de erros padronizado (RFC7807)  
+- Cache e controle de ETag  
+- Rate limiting por IP  
+- Autenticação JWT  
+- Documentação automática com Swagger/OpenAPI  
 
-Cache e controle de ETag
+---
 
-Rate limiting por IP
+## 🛠 Tecnologias Utilizadas
 
-Documentação automática com Swagger/OpenAPI
+| Camada           | Tecnologia / Biblioteca                                       |
+| ---------------- | ------------------------------------------------------------- |
+| **Backend**      | ASP.NET Core 8                                                |
+| **ORM**          | Entity Framework Core (Oracle)                                |
+| **Banco de Dados** | Oracle Managed Data Access/Core                             |
+| **Autenticação** | Microsoft.AspNetCore.Authentication.JwtBearer                |
+| **Versionamento**| Microsoft.AspNetCore.Mvc.Versioning                           |
+| **Rate Limiting**| AspNetCoreRateLimit                                           |
+| **Tratamento Erros** | Hellang.Middleware.ProblemDetails                        |
+| **Documentação** | Swashbuckle.AspNetCore (Swagger)                              |
+| **Testes Unitários** | xUnit, Moq                                               |
+| **Integração**   | Microsoft.AspNetCore.Mvc.Testing                              |
 
-🛠 Tecnologias Utilizadas
+---
 
-Camada
+## 🚀 Como Executar
 
-Framework / Biblioteca
+### 1. Pré-requisitos
 
-Backend
+- [.NET 8 SDK](https://dotnet.microsoft.com/download)  
+- Instância Oracle acessível  
 
-ASP.NET Core 8
+### 2. Configuração
 
-ORM
+1. Renomeie `appsettings.json.example` para `appsettings.json`.  
+2. Ajuste a connection string:
 
-Entity Framework Core (Oracle)
-
-Banco de Dados
-
-Oracle Managed Data Access/Core
-
-Autenticação
-
-JWT (Microsoft.AspNetCore.Authentication.JwtBearer)
-
-Versionamento
-
-Microsoft.AspNetCore.Mvc.Versioning
-
-Rate Limiting
-
-AspNetCoreRateLimit
-
-Erros
-
-Hellang.Middleware.ProblemDetails
-
-Documentação
-
-Swashbuckle.AspNetCore (Swagger)
-
-Testes Unitários
-
-xUnit, Moq
-
-Testes de Integração
-
-Microsoft.AspNetCore.Mvc.Testing
-
-🚀 Como Executar
-
-Pré-requisitos:
-
-.NET 8 SDK
-
-Instância Oracle acessível (string de conexão válida)
-
-Configuração:
-Rename appsettings.json.example para appsettings.json e ajuste DefaultConnection:
-
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "User Id=...;Password=...;Data Source=..."
-  }
-}
-
-Build & Run:
-
+   ```json
+   {
+     "ConnectionStrings": {
+       "DefaultConnection": "User Id=<usuário>;Password=<senha>;Data Source=<host>:<porta>/<serviço>"
+     }
+   }
+3. Build & Run
+bash
+Copiar
+Editar
 cd HeatWatch.API
 dotnet build
 dotnet run
+4. Acesso à API
+Swagger UI: https://localhost:{PORT}/
 
-Acesso:
-
-Swagger UI: https://localhost:{PORT}/ (RoutePrefix vazio)
-
-Endpoints: https://localhost:{PORT}/api/v1/[recurso]
+Base URL: https://localhost:{PORT}/api/v1
 
 📡 Endpoints
-
-Base Url: /api/v{version:apiVersion} (p.ex. /api/v1)
-
-Recurso
-
-Rota completa
+Base URL: /api/v{version} (ex.: /api/v1)
 
 Regiões
-
-/api/v1/regioes
+Método	Rota	Descrição
+GET	/api/v1/regioes	Lista regiões (paginação)
+GET	/api/v1/regioes/{id}	Recupera região por ID
+POST	/api/v1/regioes	Cria nova região
+PUT	/api/v1/regioes/{id}	Atualiza região existente
+DELETE	/api/v1/regioes/{id}	Remove região
 
 Eventos de Calor
-
-/api/v1/eventos-calor
+Método	Rota	Descrição
+GET	/api/v1/eventos-calor	Lista eventos de calor
+GET	/api/v1/eventos-calor/{id}	Recupera evento por ID
+POST	/api/v1/eventos-calor	Cria novo evento
+PUT	/api/v1/eventos-calor/{id}	Atualiza evento existente
+DELETE	/api/v1/eventos-calor/{id}	Remove evento
 
 Registros de Temperatura
-
-/api/v1/registros-temperatura
+Método	Rota	Descrição
+GET	/api/v1/registros-temperatura	Lista registros
+GET	/api/v1/registros-temperatura/{id}	Recupera registro por ID
+POST	/api/v1/registros-temperatura	Cria novo registro
+PUT	/api/v1/registros-temperatura/{id}	Atualiza registro existente
+DELETE	/api/v1/registros-temperatura/{id}	Remove registro
 
 Alertas
+Método	Rota	Descrição
+GET	/api/v1/alertas	Lista alertas
+GET	/api/v1/alertas/{id}	Recupera alerta por ID
+POST	/api/v1/alertas	Cria nova alerta
+PUT	/api/v1/alertas/{id}	Atualiza alerta existente
+DELETE	/api/v1/alertas/{id}	Remove alerta
 
-/api/v1/alertas
-
-Formato de Rota e Exemplos
-
-Regiões
-
-GET /api/v1/regioes?page=1&size=20&sort=Nome&filter=...
-
-GET /api/v1/regioes/{id}
-
-POST /api/v1/regioesExemplo body:
-
+📄 Exemplos de Body (JSON)
+POST /api/v1/regioes
+json
+Copiar
+Editar
 {
   "nome": "Região Central",
   "latitude": -23.5505,
   "longitude": -46.6333,
-  "descricao": "Área central",
+  "descricao": "Área central da cidade",
   "area": 1521.11
 }
-
-PUT /api/v1/regioes/{id}Body igual ao POST
-
-DELETE /api/v1/regioes/{id}
-
-Respostas Comuns: 200 OK, 201 Created, 204 No Content, 400 Bad Request, 404 Not Found, 429 Too Many Requests
-
-Eventos de Calor
-
-GET /api/v1/eventos-calor
-
-GET /api/v1/eventos-calor/{id}
-
-POST /api/v1/eventos-calorBody:
-
+POST /api/v1/eventos-calor
+json
+Copiar
+Editar
 {
   "nome": "Ondas de Calor",
   "dataInicio": "2025-06-01T00:00:00Z",
@@ -154,61 +122,42 @@ POST /api/v1/eventos-calorBody:
   "intensidade": 7,
   "regiaoId": 1
 }
-
-PUT /api/v1/eventos-calor/{id}
-
-DELETE /api/v1/eventos-calor/{id}
-
-Registros de Temperatura
-
-GET /api/v1/registros-temperatura
-
-GET /api/v1/registros-temperatura/{id}
-
-POST /api/v1/registros-temperaturaBody:
-
+POST /api/v1/registros-temperatura
+json
+Copiar
+Editar
 {
   "regiaoId": 2,
   "dataRegistro": "2025-06-08T10:00:00Z",
   "temperaturaCelsius": 36.6
 }
-
-PUT /api/v1/registros-temperatura/{id}
-
-DELETE /api/v1/registros-temperatura/{id}
-
-Alertas
-
-GET /api/v1/alertas
-
-GET /api/v1/alertas/{id}
-
-POST /api/v1/alertasBody:
-
+POST /api/v1/alertas
+json
+Copiar
+Editar
 {
   "mensagem": "Alerta de calor crítico",
   "dataEmissao": "2025-06-08T12:00:00Z",
   "severidade": "Alta",
   "eventoCalorId": 1
 }
-
-PUT /api/v1/alertas/{id}
-
-DELETE /api/v1/alertas/{id}
-
 ⚙️ Instruções de Testes
-
 Testes Unitários
-
-Local: HeatWatch.API.Tests/Unit
-
+bash
+Copiar
+Editar
+cd HeatWatch.API.Tests
 dotnet test --filter Category=Unit
-
 Testes de Integração
-
-Local: HeatWatch.API.Tests/Integration
-
+bash
+Copiar
+Editar
+cd HeatWatch.API.Tests
 dotnet test --filter Category=Integration
+📌 Observações
+A organização e formatação deste README influenciam diretamente a avaliação e a forma como outros desenvolvedores entenderão e utilizarão o projeto.
 
-Este README foi gerado seguindo boas práticas de documentação, garantindo clareza e facilidade de uso.
+Siga as boas práticas de Markdown, mantenha seções claras e exemplos precisos.
 
+Copiar
+Editar
