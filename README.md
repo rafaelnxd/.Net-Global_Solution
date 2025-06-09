@@ -17,6 +17,9 @@ O serviço oferece:
 
 ---
 
+## Vídeo:
+https://www.youtube.com/watch?v=uOzpU0tkYqs
+
 ## 🛠 Tecnologias Utilizadas
 
 | Camada           | Tecnologia / Biblioteca                                       |
