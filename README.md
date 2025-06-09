@@ -137,7 +137,7 @@ dotnet run
 
 
 
-CopiarEditar
+
 
 `{
   "nome": "Ondas de Calor",
@@ -151,7 +151,7 @@ CopiarEditar
 
 
 
-CopiarEditar
+
 
 `{
   "regiaoId": 2,
@@ -163,7 +163,7 @@ CopiarEditar
 
 
 
-CopiarEditar
+
 
 `{
   "mensagem": "Alerta de calor crítico",
