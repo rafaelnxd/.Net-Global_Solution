@@ -62,105 +62,145 @@ Editar
 cd HeatWatch.API
 dotnet build
 dotnet run
-4. Acesso à API
-Swagger UI: https://localhost:{PORT}/
 
-Base URL: https://localhost:{PORT}/api/v1
+### 4\. Acesso à API
+
+-   **Swagger UI**: `https://localhost:{PORT}/swagger`
+
+-   **Base URL**: `https://localhost:{PORT}/api/v1`
+
+* * * * *
 
 📡 Endpoints
-Base URL: /api/v{version} (ex.: /api/v1)
+------------
 
-Regiões
-Método	Rota	Descrição
-GET	/api/v1/regioes	Lista regiões (paginação)
-GET	/api/v1/regioes/{id}	Recupera região por ID
-POST	/api/v1/regioes	Cria nova região
-PUT	/api/v1/regioes/{id}	Atualiza região existente
-DELETE	/api/v1/regioes/{id}	Remove região
+### Regiões
 
-Eventos de Calor
-Método	Rota	Descrição
-GET	/api/v1/eventos-calor	Lista eventos de calor
-GET	/api/v1/eventos-calor/{id}	Recupera evento por ID
-POST	/api/v1/eventos-calor	Cria novo evento
-PUT	/api/v1/eventos-calor/{id}	Atualiza evento existente
-DELETE	/api/v1/eventos-calor/{id}	Remove evento
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| GET | `/api/v1/regioes` | Lista regiões (paginação) |
+| GET | `/api/v1/regioes/{id}` | Recupera região por ID |
+| POST | `/api/v1/regioes` | Cria nova região |
+| PUT | `/api/v1/regioes/{id}` | Atualiza região existente |
+| DELETE | `/api/v1/regioes/{id}` | Remove região |
 
-Registros de Temperatura
-Método	Rota	Descrição
-GET	/api/v1/registros-temperatura	Lista registros
-GET	/api/v1/registros-temperatura/{id}	Recupera registro por ID
-POST	/api/v1/registros-temperatura	Cria novo registro
-PUT	/api/v1/registros-temperatura/{id}	Atualiza registro existente
-DELETE	/api/v1/registros-temperatura/{id}	Remove registro
+### Eventos de Calor
 
-Alertas
-Método	Rota	Descrição
-GET	/api/v1/alertas	Lista alertas
-GET	/api/v1/alertas/{id}	Recupera alerta por ID
-POST	/api/v1/alertas	Cria nova alerta
-PUT	/api/v1/alertas/{id}	Atualiza alerta existente
-DELETE	/api/v1/alertas/{id}	Remove alerta
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| GET | `/api/v1/eventos-calor` | Lista eventos de calor |
+| GET | `/api/v1/eventos-calor/{id}` | Recupera evento por ID |
+| POST | `/api/v1/eventos-calor` | Cria novo evento |
+| PUT | `/api/v1/eventos-calor/{id}` | Atualiza evento existente |
+| DELETE | `/api/v1/eventos-calor/{id}` | Remove evento |
+
+### Registros de Temperatura
+
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| GET | `/api/v1/registros-temperatura` | Lista registros |
+| GET | `/api/v1/registros-temperatura/{id}` | Recupera registro por ID |
+| POST | `/api/v1/registros-temperatura` | Cria novo registro |
+| PUT | `/api/v1/registros-temperatura/{id}` | Atualiza registro existente |
+| DELETE | `/api/v1/registros-temperatura/{id}` | Remove registro |
+
+### Alertas
+
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| GET | `/api/v1/alertas` | Lista alertas |
+| GET | `/api/v1/alertas/{id}` | Recupera alerta por ID |
+| POST | `/api/v1/alertas` | Cria nova alerta |
+| PUT | `/api/v1/alertas/{id}` | Atualiza alerta existente |
+| DELETE | `/api/v1/alertas/{id}` | Remove alerta |
+
+* * * * *
 
 📄 Exemplos de Body (JSON)
-POST /api/v1/regioes
+--------------------------
+
+**POST /api/v1/regioes**
+
 json
-Copiar
-Editar
-{
+
+CopiarEditar
+
+`{
   "nome": "Região Central",
   "latitude": -23.5505,
   "longitude": -46.6333,
   "descricao": "Área central da cidade",
   "area": 1521.11
-}
-POST /api/v1/eventos-calor
+}`
+
+**POST /api/v1/eventos-calor**
+
 json
-Copiar
-Editar
-{
+
+CopiarEditar
+
+`{
   "nome": "Ondas de Calor",
   "dataInicio": "2025-06-01T00:00:00Z",
   "dataFim": "2025-06-05T00:00:00Z",
   "intensidade": 7,
   "regiaoId": 1
-}
-POST /api/v1/registros-temperatura
+}`
+
+**POST /api/v1/registros-temperatura**
+
 json
-Copiar
-Editar
-{
+
+CopiarEditar
+
+`{
   "regiaoId": 2,
   "dataRegistro": "2025-06-08T10:00:00Z",
   "temperaturaCelsius": 36.6
-}
-POST /api/v1/alertas
+}`
+
+**POST /api/v1/alertas**
+
 json
-Copiar
-Editar
-{
+
+CopiarEditar
+
+`{
   "mensagem": "Alerta de calor crítico",
   "dataEmissao": "2025-06-08T12:00:00Z",
   "severidade": "Alta",
   "eventoCalorId": 1
-}
+}`
+
+* * * * *
+
 ⚙️ Instruções de Testes
-Testes Unitários
+-----------------------
+
+### Testes Unitários
+
 bash
-Copiar
-Editar
-cd HeatWatch.API.Tests
-dotnet test --filter Category=Unit
-Testes de Integração
+
+CopiarEditar
+
+`cd HeatWatch.API.Tests
+dotnet test --filter Category=Unit`
+
+### Testes de Integração
+
 bash
-Copiar
-Editar
-cd HeatWatch.API.Tests
-dotnet test --filter Category=Integration
+
+CopiarEditar
+
+`cd HeatWatch.API.Tests
+dotnet test --filter Category=Integration`
+
+* * * * *
+
 📌 Observações
-A organização e formatação deste README influenciam diretamente a avaliação e a forma como outros desenvolvedores entenderão e utilizarão o projeto.
+--------------
 
-Siga as boas práticas de Markdown, mantenha seções claras e exemplos precisos.
+-   A organização e formatação deste README influenciam diretamente a avaliação do projeto.
 
-Copiar
-Editar
+-   Siga as boas práticas de Markdown, mantendo seções claras e exemplos precisos.
+
